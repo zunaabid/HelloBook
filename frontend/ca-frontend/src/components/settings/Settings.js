@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { getUserById, updateUserProfile, changePassword } from "../services/userService" // Adjust path as needed
+import { getUserById, updateUserProfile, changePassword } from "../services/userService"
 
 const Settings = () => {
   const [profileData, setProfileData] = useState({
@@ -23,10 +23,8 @@ const Settings = () => {
   const [profileError, setProfileError] = useState("")
   const [passwordError, setPasswordError] = useState("")
 
-  // Fetch user profile data when component mounts
   useEffect(() => {
     const fetchUserProfile = async () => {
-      // Get the user ID from localStorage
       const userId = localStorage.getItem('userId')
       
       if (!userId) {
@@ -43,7 +41,7 @@ const Settings = () => {
           firstName: userData.firstName || "",
           lastName: userData.lastName || "",
           email: userData.email || "",
-          role: userData.role || "User", // Default role if not provided
+          role: userData.role || "User", 
         })
         
         setLoading(false)
