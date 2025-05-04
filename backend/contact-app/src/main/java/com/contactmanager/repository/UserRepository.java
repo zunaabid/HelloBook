@@ -1,4 +1,3 @@
-// src/main/java/com/contactmanager/repository/UserRepository.java
 package com.contactmanager.repository;
 
 import com.contactmanager.model.User;
