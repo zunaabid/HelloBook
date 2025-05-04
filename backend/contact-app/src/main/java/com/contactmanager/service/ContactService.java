@@ -14,7 +14,7 @@ public class ContactService {
     @Autowired
     private ContactRepository contactRepository;
 
-    // Get contacts for a specific user with pagination
+    // Get contacts for a specific user 
     public Page<Contact> getUserContacts(Long userId, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         return contactRepository.findByUserId(userId, pageable);
@@ -33,7 +33,7 @@ public class ContactService {
         return contact;
     }
 
-    // Search contacts for a specific user with pagination
+    // Search contacts for a specific user
     public Page<Contact> searchUserContacts(Long userId, String searchTerm, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         return contactRepository.searchUserContacts(userId, searchTerm, pageable);
