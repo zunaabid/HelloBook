@@ -9,14 +9,14 @@ import { fetchContacts, searchContacts, createContact, updateContact, deleteCont
 import { getUserById } from '../services/userService';
 
 const Contacts = () => {
-  // Remove hardcoded initial contacts
+
   const [contacts, setContacts] = useState([])
   const [filteredContacts, setFilteredContacts] = useState([])
   const [selectedContacts, setSelectedContacts] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
   const [searchResults, setSearchResults] = useState([])
   const [showSearchResults, setShowSearchResults] = useState(false)
-  const [currentPage, setCurrentPage] = useState(0) // Changed to 0-based for Spring Boot pagination
+  const [currentPage, setCurrentPage] = useState(0) 
   const [totalPages, setTotalPages] = useState(0)
   const [totalItems, setTotalItems] = useState(0)
   const [editContact, setEditContact] = useState(null)
@@ -34,10 +34,10 @@ const Contacts = () => {
   const [currentSort, setCurrentSort] = useState("")
   const [selectedTitles, setSelectedTitles] = useState([])
 
-  // Pagination constants
+
   const contactsPerPage = 10
 
-  // User profile data (keep hardcoded for now)
+  // User profile data
   const [userProfile, setUserProfile] = useState({
     firstName: "",
     lastName: "",
@@ -74,7 +74,7 @@ const Contacts = () => {
       try {
         setLoading(true)
         const data = await fetchContacts(currentPage, contactsPerPage)
-        setContacts(data.content) // Spring Boot returns paginated data with 'content' field
+        setContacts(data.content) 
         setFilteredContacts(data.content)
         setTotalPages(data.totalPages)
         setTotalItems(data.totalElements)
@@ -93,7 +93,7 @@ const Contacts = () => {
   useEffect(() => {
     let result = [...contacts]
 
-    // Apply sorting (client-side for now)
+    // Apply sorting
     if (currentSort) {
       result.sort((a, b) => {
         if (currentSort === "firstNameAsc") {
@@ -118,7 +118,7 @@ const Contacts = () => {
     setFilteredContacts(result)
   }, [contacts, currentSort, selectedTitles])
 
-  // Handle search (will use backend API)
+  // Handle search 
   const handleSearch = async (e) => {
     const term = e.target.value
     setSearchTerm(term)
@@ -188,10 +188,10 @@ const Contacts = () => {
     try {
       await updateContact(updatedContact.id, updatedContact)
       setShowEditModal(false)
-      setRefreshKey((prev) => prev + 1) // Force re-fetch
+      setRefreshKey((prev) => prev + 1) 
     } catch (err) {
       console.error("Error updating contact:", err)
-      // Handle error (e.g., show error message)
+      
     }
   }
 
@@ -202,10 +202,10 @@ const Contacts = () => {
       await deleteContact(contactToDelete.id)
       setShowDeleteModal(false)
       setContactToDelete(null)
-      setRefreshKey((prev) => prev + 1) // Force re-fetch
+      setRefreshKey((prev) => prev + 1) 
     } catch (err) {
       console.error("Error deleting contact:", err)
-      // Handle error (e.g., show error message)
+      
     }
   }
 
@@ -213,10 +213,10 @@ const Contacts = () => {
     try {
       await createContact(newContactData)
       setShowAddModal(false)
-      setRefreshKey((prev) => prev + 1) // Force re-fetch
+      setRefreshKey((prev) => prev + 1) 
     } catch (err) {
       console.error("Error creating contact:", err)
-      // Handle error (e.g., show error message)
+     
     }
   }
 
@@ -241,7 +241,7 @@ const Contacts = () => {
   // Get unique titles for filter
   const uniqueTitles = [...new Set(contacts.map((contact) => contact.title))]
 
-  // Handle pagination
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage)
   }
