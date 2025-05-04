@@ -1,4 +1,4 @@
-// userService.js
+
 const API_BASE_URL = "http://localhost:8080/api/auth"; 
 
 // Register a new user
