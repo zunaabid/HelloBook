@@ -1,4 +1,3 @@
-// src/main/java/com/contactmanager/model/Contact.java
 package com.contactmanager.model;
 
 import jakarta.persistence.*;
