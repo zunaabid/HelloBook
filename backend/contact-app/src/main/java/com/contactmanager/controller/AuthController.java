@@ -1,4 +1,3 @@
-// src/main/java/com/contactmanager/controller/AuthController.java
 package com.contactmanager.controller;
 
 import com.contactmanager.model.User;
