@@ -1,7 +1,7 @@
-// Updated API base URL to include user ID parameter
+
 const API_BASE_URL = "http://localhost:8080/api/users";
 
-// Helper function to get the current user ID from localStorage
+
 const getCurrentUserId = () => {
   const userId = localStorage.getItem('userId');
   if (!userId) {
