@@ -16,18 +16,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Correct way to disable CSRF in Spring Security 6.x
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll() // Allow public access to auth endpoints
-                        .anyRequest().permitAll() // Allow public access to all other endpoints
+                        .requestMatchers("/api/auth/**").permitAll() 
+                        .anyRequest().permitAll() 
                 )
-                .securityContext(customizer -> customizer.disable()); // Disable security context for testing purposes
+                .securityContext(customizer -> customizer.disable()); 
 
         return http.build();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // This will create the PasswordEncoder bean
+        return new BCryptPasswordEncoder(); 
     }
 }
